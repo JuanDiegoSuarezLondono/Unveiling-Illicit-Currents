@@ -68,10 +68,10 @@ The central question driving this project is: "Which classification model proves
     - ***CONS_NO:*** Consumer Number stands for a customer ID of string type.
     - ***FLAG:*** 0 indicating no theft and 1 for theft.
 
-## **Exploratory data analysis:**
+### **Exploratory data analysis:**
 The initial exploration of the dataset revealed crucial insights into the challenges and characteristics of the data. With 1036 columns representing daily electricity consumption and 42,372 rows, the dataset captures a vast range of information. Notable findings include a substantial percentage (25.6%) of missing values, a skewed distribution of consumption values, and a significant class imbalance in the 'FLAG' column, where '0' (non-theft) dominates over '1' (theft) cases.
 
-[![Post-Char-Count.png](https://i.postimg.cc/8zMs46q2/Post-Char-Count.png)](https://postimg.cc/QFNXxHNm)
+[![Proportion of Null and Non-Null Data.png](https://i.postimg.cc/rsxKpGP4/1.png)](https://postimg.cc/8fk1KvDk)
 
 
 **Cleaning and preparation:** To prepare the data for analysis, necessary cleaning steps were taken. Columns with high missing values ('CONS_NO' and '10/3/2014') were removed, addressing issues that could hinder model performance. Additionally, the class imbalance in the 'FLAG' column was mitigated through undersampling, resulting in a balanced dataset with a shape of (7230, 1034). These steps laid the foundation for further analysis and model development.
