@@ -191,6 +191,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.61      0.73      0.67       704
        1       0.69      0.56      0.62       742
        accuracy                    0.64       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - KNN.png](https://i.postimg.cc/63m9754N/Confusion-Matrix-KNN.png)](https://postimg.cc/N9RhStxN)
 
 #### Decision Trees
 - **Accuracy:** 62.59%
@@ -201,6 +203,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.61      0.64      0.63       704
        1       0.64      0.61      0.63       742
        accuracy                    0.63       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - Decision Trees.png](https://i.postimg.cc/Dz7fHN3R/Confusion-Matrix-Decision-Trees.png)](https://postimg.cc/0zHqJcQC)
 
 #### Support Vector Machines (SVM)
 - **Accuracy:** 60.17%
@@ -211,6 +215,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.76      0.27      0.40       704
        1       0.57      0.92      0.70       742
        accuracy                    0.60       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - SVM](https://i.postimg.cc/5jcb37m7/Confusion-Matrix-SVM.png)](https://postimg.cc/1VKkRK2w)
 
 #### Random Forest
 - **Best Parameters:** {'bootstrap': False, 'max_depth': 20, 'n_estimators': 200}
@@ -221,6 +227,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.71      0.73      0.72       704
        1       0.74      0.71      0.73       742
        accuracy                    0.72       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - Random Forest](https://i.postimg.cc/RhJvw5wJ/Confusion-Matrix-Random-Forest.png)](https://postimg.cc/K3FXyWqm)
 
 #### Gradient Boosting
 - **Best Parameters:** {'max_depth': 5, 'min_samples_split': 2, 'n_estimators': 50}
@@ -231,6 +239,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.69      0.77      0.73       704
        1       0.75      0.66      0.71       742
        accuracy                    0.72       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - Gradient Boosting](https://i.postimg.cc/TPQ26cR1/Confusion-Matrix-Gradient-Boosting.png)](https://postimg.cc/94RHPZwH)
 
 #### XGBoost
 - **Best Parameters:** {'gamma': 0, 'learning_rate': 0.2, 'n_estimators': 100}
@@ -241,6 +251,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.70      0.76      0.73       704
        1       0.75      0.69      0.72       742
        accuracy                    0.72       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - XGBoost](https://i.postimg.cc/XNr5sr8d/Confusion-Matrix-XGBoost.png)](https://postimg.cc/ThXhwYB3)
 
 #### Neural Networks
 - **Best Parameters:** {'activation': 'logistic', 'alpha': 0.001, 'hidden_layer_sizes': (30, 20, 10)}
@@ -251,6 +263,8 @@ In this section, we will examine the performance and results of the models appli
        0       0.61      0.70      0.65       704
        1       0.67      0.58      0.62       742
        accuracy                    0.64       1446
+- **Confusion Matrix:**
+[![Confusion Matrix - NN](https://i.postimg.cc/wvvqTsvV/Confusion-Matrix-NN.png)](https://postimg.cc/LqcKx5jY)
 
 ### Summarizing Results and Choosing the Best Model
 
