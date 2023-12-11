@@ -51,7 +51,7 @@ The central question driving this project is: "Which classification model proves
 
 ### Data Sources
 
-**Dataset:**The dataset used in this project is sourced from Kaggle and can be accessed at [SGCC Electricity Theft Detection](https://www.kaggle.com/datasets/bensalem14/sgcc-dataset/)
+**Dataset:** The dataset used in this project is sourced from Kaggle and can be accessed at [SGCC Electricity Theft Detection](https://www.kaggle.com/datasets/bensalem14/sgcc-dataset/)
 
 #### About Dataset
 - **Overview**
@@ -68,20 +68,18 @@ The central question driving this project is: "Which classification model proves
     - ***CONS_NO:*** Consumer Number stands for a customer ID of string type.
     - ***FLAG:*** 0 indicating no theft and 1 for theft.
 
-**Exploratory data analysis:** There are no null values in this data, and the length of the majority of posts lie under 500 characters, with very few exceeding 2000 characters. Mean character count is 680.136, min character count is 7, and max character count is 40106. This is illustrated below. 
+**Exploratory data analysis:** The initial exploration of the dataset revealed crucial insights into the challenges and characteristics of the data. With 1036 columns representing daily electricity consumption and 42,372 rows, the dataset captures a vast range of information. Notable findings include a substantial percentage (25.6%) of missing values, a skewed distribution of consumption values, and a significant class imbalance in the 'FLAG' column, where '0' (non-theft) dominates over '1' (theft) cases.
 
 [![Post-Char-Count.png](https://i.postimg.cc/8zMs46q2/Post-Char-Count.png)](https://postimg.cc/QFNXxHNm)
 
 
-**Cleaning and preparation:** The unique ID column was dropped because it adds no meaningful information to the analysis. The "class" column was renamed "suicide", and its values numerically represented by designating the "suicide" class as 1 and the "non-suicide" class 0. 
+**Cleaning and preparation:** To prepare the data for analysis, necessary cleaning steps were taken. Columns with high missing values ('CONS_NO' and '10/3/2014') were removed, addressing issues that could hinder model performance. Additionally, the class imbalance in the 'FLAG' column was mitigated through undersampling, resulting in a balanced dataset with a shape of (7230, 1034). These steps laid the foundation for further analysis and model development.
 
-The data is randomly split into train and test sets to facilitate holdout cross validation, with a test size of 0.25. 
+**Preprocessing:** The preprocessing phase focused on handling missing values in the remaining dataset. Leveraging the KNNImputer algorithm, missing values were imputed, ensuring a comprehensive and complete dataset. This step was crucial for maintaining the integrity of the data and facilitating accurate model training and evaluation.
 
-**Preprocessing:** A preprocessing function is written to first tokenize posts using TweetTokenizer and ignore casing. Stopwords and punctuation are removed, and the remaining words are stemmed with PorterStemmer. Lemmatization is not used because previous testing of that method on this data revealed little to no improvement in model performance (accuracy) and took significantly longer to run. 
+**Final Dataset:** The final dataset emerged as a well-prepared, balanced, and imputed version with no missing values. With a shape of (7230, 1034), the dataset was ready for feature selection, model development, and evaluation. The completion of this phase marked a significant milestone, setting the stage for the application of various classification models to identify patterns associated with electricity theft effectively.
 
-**Final Dataset:** The final dataset consists of two columns: "text" indicating the textual contents of the social media post, and "suicide" indicating the class -- 1 for suicidal and 0 for non-suicidal. 
-
-The data are balanced, with comparable counts of suicide and non-suicide posts. This makes accuracy score a suitable metric for evaluating models trained on this data. Class distribution of posts can be seen below. 
+The data is randomly split into train and test sets, with a test size of 0.2. 
 
 [![Post-Class-Counts.png](https://i.postimg.cc/y6DR9k8H/Post-Class-Counts.png)](https://postimg.cc/5jMjW9z7)
 
