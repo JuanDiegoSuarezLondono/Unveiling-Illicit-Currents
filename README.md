@@ -192,6 +192,101 @@ In this section, we will examine the performance and results of the models appli
        1       0.69      0.56      0.62       742
        accuracy                    0.64       1446
 
+#### Decision Trees
+- **Accuracy:** 62.59%
+- **Best Parameters:** {'max_depth': 30, 'min_samples_split': 2}
+- **Classification Report:**
+
+              precision    recall  f1-score   support
+       0       0.61      0.64      0.63       704
+       1       0.64      0.61      0.63       742
+       accuracy                    0.63       1446
+
+#### Support Vector Machines (SVM)
+- **Accuracy:** 60.17%
+- **Best Parameters:** {'C': 20, 'gamma': 'auto', 'kernel': 'rbf'}
+- **Classification Report:**
+
+              precision    recall  f1-score   support
+       0       0.76      0.27      0.40       704
+       1       0.57      0.92      0.70       742
+       accuracy                    0.60       1446
+
+#### Random Forest
+- **Best Parameters:** {'bootstrap': False, 'max_depth': 20, 'n_estimators': 200}
+- **Accuracy:** 72.34%
+- **Classification Report:**
+
+              precision    recall  f1-score   support
+       0       0.71      0.73      0.72       704
+       1       0.74      0.71      0.73       742
+       accuracy                    0.72       1446
+
+#### Gradient Boosting
+- **Best Parameters:** {'max_depth': 5, 'min_samples_split': 2, 'n_estimators': 50}
+- **Accuracy:** 71.58%
+- **Classification Report:**
+
+              precision    recall  f1-score   support
+       0       0.69      0.77      0.73       704
+       1       0.75      0.66      0.71       742
+       accuracy                    0.72       1446
+
+#### XGBoost
+- **Best Parameters:** {'gamma': 0, 'learning_rate': 0.2, 'n_estimators': 100}
+- **Accuracy:** 72.41%
+- **Classification Report:**
+
+              precision    recall  f1-score   support
+       0       0.70      0.76      0.73       704
+       1       0.75      0.69      0.72       742
+       accuracy                    0.72       1446
+
+#### Neural Networks
+- **Best Parameters:** {'activation': 'logistic', 'alpha': 0.001, 'hidden_layer_sizes': (30, 20, 10)}
+- **Accuracy:** 63.62%
+- **Classification Report:**
+  
+              precision    recall  f1-score   support
+       0       0.61      0.70      0.65       704
+       1       0.67      0.58      0.62       742
+       accuracy                    0.64       1446
+
+### Summarizing Results and Choosing the Best Model
+
+| Model             | Accuracy (%) | Recall (Flag 1) (%) |
+|-------------------|--------------|---------------------|
+| KNN               | 64.32        | 56                  |
+| Decision Trees    | 62.59        | 61                  |
+| SVM               | 60.17        | 92                  |
+| Random Forest     | 72.34        | 71                  |
+| Gradient Boosting | 71.58        | 66                  |
+| XGBoost           | 72.41        | 69                  |
+| Neural Networks   | 63.62        | 58                  |
+
+### K-fold Cross-Validation
+
+#### KNN
+- Mean Recall: 0.5353
+
+#### Decision Trees
+- Mean Recall: 0.6081
+
+#### Support Vector Machines (SVM)
+- Mean Recall: 0.9112
+
+#### Random Forest
+- Mean Recall: 0.6895
+
+#### Gradient Boosting
+- Mean Recall: 0.6759
+
+#### XGBoost
+- Mean Recall: 0.6544
+
+#### Neural Networks
+- Mean Recall: 0.6561
+
 ### Outline of project
 
 [Link to download data](http://localhost:8888/files/Downloads/ML%20ipynb/Capstone/SuicideDetection.csv?_xsrf=2%7C01e7821a%7C54dac168862e9a75a5e46c1d11d7822e%7C1658864864) 
