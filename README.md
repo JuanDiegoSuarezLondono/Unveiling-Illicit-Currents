@@ -89,43 +89,109 @@ The data is randomly split into train and test sets, with a test size of 0.2.
 
 In this project, a thorough evaluation of various machine learning models was conducted using a similar methodology to ensure consistency and comparability of results. The following steps were undertaken:
 
+# Machine Learning Model Evaluation
+
+## Methodology
+
+In this project, a thorough evaluation of various machine learning models was conducted using a similar methodology to ensure consistency and comparability of results. The following steps were undertaken:
+
 #### Data Preparation
+
 - The dataset was split into training and test sets to facilitate model training and evaluation.
 - Text data was preprocessed and standardized using the Term Frequency-Inverse Document Frequency (TF-IDF) technique.
 
+#### Model Selection and Training
 
-1. **K-Nearest Neighbors (KNN):**
-    - A KNN model was built and fine-tuned using GridSearchCV to find the optimal hyperparameters, including the number of neighbors, weighting scheme, and distance metric.
-    - The model was trained on the training set and evaluated on the test set.
+Seven different machine learning models were considered for this task:
 
-**Logistic Regression Model:** A pipeline object is created to standardize the data using TF-IDF and instantiate a Logistic Regression model. RandomizedSearchCV is used to find (1) the optimal penlaty, with the options being ['l1', 'l2', 'none'] and (2) whether an intercept term should be included (options: [True, False]). The best model has l2 penalty and an intercept term.
+1. **K-Nearest Neighbors (KNN)**
+   - A KNN model was built and fine-tuned using GridSearchCV to find the optimal hyperparameters, including the number of neighbors, weighting scheme, and distance metric.
+   - The model was trained on the training set and evaluated on the test set.
 
-**Decision Tree Model:** A pipeline object is created to standardize the data using TF-IDF and instantiate a Decision Tree model. RandomizedSearchCV is used to find (1) the optimal tree criterion, with the options being ['gini', 'entropy'], (2) max depth (options: [None, 1, 2, 3, 4]), and (3) the minimum sample count required to split a node (options: [1, 2, 3, 4]). The best model has a minimum sample split of 3, no max depth, and uses the gini criterion.
+   **Hyperparameters Evaluated:**
+   - `n_neighbors`: [3, 5, 7]
+   - `weights`: ['uniform', 'distance']
+   - `p`: [1, 2]
 
-**Support Vector Classifier Model:** A pipeline object is created to standardize the data using TF-IDF and instantiate a Support Vector Classifier model using a linear kernel. RandomizedSearchCV is used to (1) The optimal C value (options: [0.1, 1, 10, 100, 1000]) and (2) Probability (options: [True, False]). The best model has a probability = True and a C value of 1.
+2. **Decision Trees (DT)**
+   - A Decision Tree model was constructed and optimized through GridSearchCV to determine the best parameters, such as maximum depth and minimum samples required for node splitting.
+   - The model's performance was assessed on the test set.
 
-### Model evaluation and results 
+   **Hyperparameters Evaluated:**
+   - `max_depth`: [10, 20, 30]
+   - `min_samples_split`: [2, 5, 10]
 
-Model performance will be visualized using confusion matrices, which indicate the counts of each error type a model made in the classification task. In these plots, 0 = not suicidal and 1 = suicidal.
+3. **Support Vector Machines (SVM)**
+   - An SVM model was developed, and hyperparameters were fine-tuned using GridSearchCV, considering parameters like the regularization parameter (C), kernel type, and gamma.
+   - The model's performance was evaluated on the test set.
 
+   **Hyperparameters Evaluated:**
+   - `C`: [10, 20]
+   - `kernel`: ['rbf']
+   - `gamma`: ['scale', 'auto']
 
-**Support vector classifier model:** The SVC model is the best model for detecting suicide ideation, with an accuracy score of 0.924, a recall of 0.916, and an F-1 of 0.924. This decision is based off comparing the fine-tuned models' accuracy, recall, and F1 scores. Out of all the models, the SVC has the best accuracy and F1 scores, and the second best recall score. It also took the longest to train, at 2339 seconds. It predicts slightly more false negatives than false positives and its confusion matrix can be seen below. 
+4. **Random Forest (RF)**
+   - A Random Forest model was built and optimized through GridSearchCV to find the best combination of parameters, including the number of trees, maximum depth, and bootstrap method.
+   - The model's performance was assessed on the test set.
 
-[![SVCMatrix.png](https://i.postimg.cc/3xzf5dJC/SVCMatrix.png)](https://postimg.cc/21F7njWV)
+   **Hyperparameters Evaluated:**
+   - `n_estimators`: [50, 200]
+   - `max_depth`: [10, 20]
+   - `bootstrap`: [False]
 
-**Logistic regression model:**  The Logistic Regression model has an accuracy of 0.917, recall of 0.899, and F-1 of 0.916. It predicts nearly twice as many FN (false negatives) as FP (false positives), indicating that it is much more likely to classify a suicidal person as non-suicidal than vice versa. Its confusion matrix can be seen below. 
+5. **Gradient Boosting**
+   - A Gradient Boosting model was initialized and optimized through GridSearchCV to adjust hyperparameters such as the number of estimators, maximum depth, and minimum samples required for node splitting.
+   - The model's performance was evaluated on the test set.
 
-[![LGRMatrix.png](https://i.postimg.cc/MKKF1CFR/LGRMatrix.png)](https://postimg.cc/4nqPgSZN)
+   **Hyperparameters Evaluated:**
+   - `n_estimators`: [50]
+   - `max_depth`: [3, 4, 5]
+   - `min_samples_split`: [2, 5, 10]
 
-**Naive Bayes model:** The Naive Bayes model has an accuracy of 0.890, the best overall recall of 0.955, and an F-1 of 0.897. It predicts nearly four times as many false positives as false negatives, indicating it is much more likely to classify a non-suicidal person as suicidal than the other way around. Its confusion matrix can be seen below. 
+6. **XGBoost**
+   - An XGBoost model was initialized and optimized through GridSearchCV to adjust hyperparameters, including the number of estimators, learning rate, and gamma.
+   - The model's performance was evaluated on the test set.
 
-[![NBMatrix.png](https://i.postimg.cc/xTtB7fzt/NBMatrix.png)](https://postimg.cc/crtDtNTn)
- 
-**Decision tree model:** The Decision Tree model has an accuracy of 0.822, a recall of 0.814, and an F-1 of 0.822. It takes the least amount of time to train at 16 seconds, and has similar false positive and false negative counts. Its confusion matrix can be seen below. 
+   **Hyperparameters Evaluated:**
+   - `n_estimators`: [50, 100, 200]
+   - `learning_rate`: [0.2]
+   - `gamma`: [0, 0.1, 0.2]
 
-[![DTree-Matrix.png](https://i.postimg.cc/qqQD9wzz/DTree-Matrix.png)](https://postimg.cc/9wRB9GPh)
+7. **Neural Networks (NN)**
+   - A Neural Network model was initialized using MLPClassifier, and parameters were adjusted through GridSearchCV, including hidden layer sizes, activation function, and alpha.
+   - The model's performance was evaluated on the test set.
 
-A detailed interpretation and evaluation of the best model can be found in the results and conclusion section of the executive summary above. 
+   **Hyperparameters Evaluated:**
+   - `hidden_layer_sizes`: [(30, 20, 10)]
+   - `activation`: ['relu', 'logistic']
+   - `alpha`: [0.0001, 0.001, 0.01]
+
+### Model Evaluation
+
+For each model, the following steps were taken:
+
+- **Calculate Efficiency:**
+  - Obtain the best hyperparameters identified by the respective GridSearchCV.
+  - Make predictions on the test set using the best-fitted model.
+  - Evaluate the model's accuracy on the test set.
+
+- **Confusion Matrix Visualization:**
+  - Create a confusion matrix to visualize the model's performance in terms of true positives, true negatives, false positives, and false negatives.
+
+### Model Evaluation and Results
+
+In this section, we will examine the performance and results of the models applied to the electricity theft detection problem.
+
+#### K-Nearest Neighbors (KNN)
+- **Accuracy:** 64.32%
+- **Best Parameters:** {'n_neighbors': 5, 'p': 2, 'weights': 'distance'}
+- **Classification Report:**
+
+              precision    recall  f1-score   support
+       0       0.61      0.73      0.67       704
+       1       0.69      0.56      0.62       742
+accuracy                           0.64      1446
+
 
 ### Outline of project
 
