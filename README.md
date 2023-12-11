@@ -13,40 +13,17 @@ The Gradient Boosting model stands out with the highest F1 score (0.66), providi
 
 The comprehensive performance summary of each model, including k-fold cross-validation results, is presented in the preceding section.
 
-[![Summary of results in a table](https://i.postimg.cc/fTYYvn06/Summary-of-results-in-a-table.png)](https://postimg.cc/cr4Kszhm)
+[![Summary of results in a table](https://i.postimg.cc/wjX4Qcfk/Summary-of-results-in-a-table.png)](https://postimg.cc/gx0KYRPw)
 
 
 #### **Results and conclusion:**
 Our evaluation of the best model returned a list of words associated with their feature importance, or how helpful/unhelpful they were in the classification task. A global model analysis revealing the most effective (stemmed) words to detect [+ suicide] across the entire data shows the top five features to be ["suicid", "kill", "end", "pill", "life"] (results below). 
 
-[![Model-Feature-Weights.png](https://i.postimg.cc/XqqF6syz/Model-Feature-Weights.png)](https://postimg.cc/BPWtxcpT)
+#### **Future Research and Development:**
+An intriguing observation reveals that addressing data imbalance with Undersampling instead of SMOTE (Synthetic Minority Over-sampling Technique) made a significant difference in the project's performance. Exploring alternative techniques to balance these imbalanced datasets would be worthwhile. Additionally, the dataset exhibits considerable variability in null values. Reducing the quantity of null data and imputing it with nearest neighbors significantly improved the model's performance. Considering alternative approaches, such as setting null values to zero, might also yield improved results.
 
-A local model analysis consisting of two example predictions (one suicide, one non-suicide) returns the most prominent features of those individual posts in the class decision. The KL-divergence for this non-suicidal class prediction is ~0.012, indicating close similarity in predictions between the black box model and the model built with LIME used for interpretation.
-
-Image (below): Feature weights of a non-suicidal post prediction 
-
-[![Non-Suicidal-Example.png](https://i.postimg.cc/261qyV2H/Non-Suicidal-Example.png)](https://postimg.cc/S2pQtN08)
-
-Image (below): Feature weight of a suicidal post prediction. A dark green highlight indicates substantial importance in the prediction while dark red indicates negative importance, or the word reduces the prediction value/increases the loss. The KL-divergence for this prediction is ~0.010, indicating close similarity in predictions between the black box model and the model built with LIME used for interpretation. 
-
-[![Suicidal-Example.png](https://i.postimg.cc/D0D81FY2/Suicidal-Example.png)](https://postimg.cc/QKQ83L3P)
-
-
-This study shows that a word's presence in a document/social media post plays a significant role in the task of identifying individuals with suicide ideation -- some words more than others. Below is a word cloud, which showcases the most representative (common) words of each class. Further work can be done in crosschecking this ordering of words vs their weights assigned by not just the SVC model but also the Logistic Regression, Decision Tree, and Naive Bayes models. 
-
-[![Suicidal-Word-Cloud.png](https://i.postimg.cc/fTdYG6x0/Suicidal-Word-Cloud.png)](https://postimg.cc/Yhp4gDDp)
-
-[![Non-Suicidal-Word-Cloud.png](https://i.postimg.cc/66ySFLYG/Non-Suicidal-Word-Cloud.png)](https://postimg.cc/s1CwhSFV)
-
-
-#### **Future research and development:**
-Comparing the two feature values shows an interesting dichotomy in the feature importance assigned "feel". It has a high positive score in classifying our first post as non-suicidal and a negative importance in classifying our second post as suicidal. This gives way to a theory that the absense of certain words is a significant feature in gauging a post's non-membership of a class -- and in a binary classification problem, its membership of the second class. Because it is impossible for a person/post to be both or neither suicidal nor non-suicidal, saying that a post is not [suicidal] is synonymous with saying it is [not suicidal].
-
-#### **Next steps and recommendations:**
-We can explore this possibility by **using the pandas query function to compile two lists of words: Those that appear only in suicidal posts and those that only appear in non-suicidal posts.** One might begin by **building two vocabularies**, the first consisting of every unique word from the all the posts in the suicidal class, and the second consisting of every unique word from the non-suicidal class. It may be illuminating to **go through these two vocabularies and make a list of [words that appear in class 1 and not in class 0] and another list of [words that appear in class 0 and not in class 1]**. Additionally, one could **cross check the model permutation importance scores of words in these two lists to see if they have high absolute permutation importance values.**
-
-Additionally, further work can be done in improving the performance of the best classification model. **The best model can be extended, further fine-tuned, or even replaced by experimenting with or incorporating other algorithms and techniques, such as ensemble methods or recurrent neural networks**. Future exploration can also be done in **crosschecking the importance of words, as indicated by the word cloud, and the words' weights, assigned by not just the SVC model but also the Logistic Regression, Decision Tree, and Naive Bayes models.**
-
+#### **Next Steps and Recommendations:**
+To delve deeper into this observation, several approaches can be taken. Firstly, investigating the origin of the numerous data gaps from the electric grid is essential. Null values may be attributed to various factors, such as a user recently joining the electric grid (resulting in no previous records), power outages, disconnections due to non-payment, etc. Handling these null values more delicately is crucial, as they significantly influence each user's consumption behavior. Additionally, another avenue to explore involves dividing the data into segments corresponding to electrical cutoff cycles, allowing for a more nuanced analysis of consumption patterns, alongside considering factors like billing cost and market electricity prices.
 
 ### Rationale
 
