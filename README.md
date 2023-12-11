@@ -190,8 +190,7 @@ In this section, we will examine the performance and results of the models appli
               precision    recall  f1-score   support
        0       0.61      0.73      0.67       704
        1       0.69      0.56      0.62       742
-accuracy                           0.64      1446
-
+       accuracy                    0.64       1446
 
 ### Outline of project
 
