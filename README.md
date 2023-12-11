@@ -83,25 +83,20 @@ The initial exploration of the dataset revealed crucial insights into the challe
 
 The data is randomly split into train and test sets, with a test size of 0.2. 
 
-[![Post-Class-Counts.png](https://i.postimg.cc/y6DR9k8H/Post-Class-Counts.png)](https://postimg.cc/5jMjW9z7)
-
-The first five rows of the dataframe can be seen below. 
-
-[![Final-Df-Head.png](https://i.postimg.cc/NMHgGqBW/Final-Df-Head.png)](https://postimg.cc/WFsRSyDn)
-
+[![Number of Users by Theft Indicator balanced.png](https://i.postimg.cc/4dJ5V5cz/Number-of-Users-by-Theft-Indicator-balanced.png)](https://postimg.cc/cKbwNfXH)
 
 ### Methodology
 
-Holdout cross validation is implemented. Models were trained on the training set and validated with the test set. Additionally, RandomizedSearchCV was used to evaluate models using accuracy score, and fine tuned each model's hyperparameters to maximize this metric.  Accuracy is suitable because we have a balanced dataset and measures the proportion of correctly predicted observations out of total observations. It is calculated as (True Positive count + True Negative count) / (Total count), or
+In this project, a thorough evaluation of various machine learning models was conducted using a similar methodology to ensure consistency and comparability of results. The following steps were undertaken:
 
-$$
-\frac{TP + TN}{TP + TN + FP + FN}
-$$
+#### Data Preparation
+- The dataset was split into training and test sets to facilitate model training and evaluation.
+- Text data was preprocessed and standardized using the Term Frequency-Inverse Document Frequency (TF-IDF) technique.
 
 
-Four models were trained, fine-tuned, and will be later compared to find the best model for this task.
-
-**Naive Bayes Model:** A pipeline object is created to standardize the data using TF-IDF and instantiate a Naïve Bayes model. RandomizedSearchCV is used to find the optimal alpha value (options: [1, 0.1, 0.01, 0.001, 0]), which turned out to be 0.1.
+1. **K-Nearest Neighbors (KNN):**
+    - A KNN model was built and fine-tuned using GridSearchCV to find the optimal hyperparameters, including the number of neighbors, weighting scheme, and distance metric.
+    - The model was trained on the training set and evaluated on the test set.
 
 **Logistic Regression Model:** A pipeline object is created to standardize the data using TF-IDF and instantiate a Logistic Regression model. RandomizedSearchCV is used to find (1) the optimal penlaty, with the options being ['l1', 'l2', 'none'] and (2) whether an intercept term should be included (options: [True, False]). The best model has l2 penalty and an intercept term.
 
