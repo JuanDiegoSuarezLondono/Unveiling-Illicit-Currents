@@ -43,21 +43,30 @@ Additionally, further work can be done in improving the performance of the best 
 
 ### Rationale
 
-The problem this project tries to solve is the growing rate of suicide. According to the CDC, suicide rates increased 30% between 2000 and 2018, and in 2020, suicide was among the top 9 leading causes of death for individuals aged 10-64, taking the lives of 45,979 people that year.  The number of individuals who think about or attempt suicide is even greater, with an estimated 12.2 million American adults seriously considering suicide in 2020, 3.2 million planned attempts, and 1.2 million actual attempts. (Centers for Disease Control and Prevention [CDC], 2022)
-
-Suicide can be prevented, and the first step to prevention is identifying those in need of support/treatment.   
+This project, titled 'Unveiling Illicit Currents: An Analytical Exploration of Electricity Consumption Patterns for Detecting Theft in the Power Grid,' aims to address the issue of electricity theft in the power grid. The initiative seeks to develop a robust system to identify and mitigate electricity theft through the use of classification models and data mining and machine learning techniques. The focus is on analyzing the electricity consumption behavior patterns of users to improve efficiency in theft detection, thus contributing to the financial stability of utility companies, ensuring the safety and reliability of the power grid, and complying with legal and ethical standards.
 
 ### Research Question
 
-The question this project aims to answer is what is the best classification model for detecting individuals at risk for suicide, as well as what the best features (words) for this task are.
+The central question driving this project is: "Which classification model proves most effective in identifying individuals at risk for suicide, and what features or words contribute most significantly to this predictive task?"
 
 ### Data Sources
 
-**Dataset:**The dataset used in this project is sourced from Kaggle and can be accessed at https://www.kaggle.com/datasets/nikhileswarkomati/suicide-watch. 
+**Dataset:**The dataset used in this project is sourced from Kaggle and can be accessed at [SGCC Electricity Theft Detection](https://www.kaggle.com/datasets/bensalem14/sgcc-dataset/)
 
-The data are a collection of posts collected from the 'SuicideWatch' and 'teenagers' subreddits from the Reddit platform using PushshiftAPI. Posts were created between 16 December 2008 - 2 January 2021. Social media posts collected from the 'SuicideWatch' subreddit are labelled 'suicide', while posts collected from 'teenagers' are labelled 'non-suicide'. The original dataset has 232,074 rows and three columns: (1) "Unnamed : 0" is a unique ID for each row (2) "text" is the text content of the social media post (3) "class" indicates whether the poster is suicidal or not; unique values: ['suicide', 'non-suicide']
+#### About Dataset
+- **Overview**
 
-20,000 random samples from the data is used for model training to facilitate computation. 
+    The State Grid Corporation of China (SGCC) dataset with 1000 records was used in the model. This is a key resource in the field of power distribution and management, with a large and varied set of data about electricity transport and grid operations. This set of data contains a lot of different kinds of information, such as history and real-time data on energy use, grid infrastructure, the integration of green energy, and grid performance.
+    
+- **Description**
+
+    Electricity theft detection released by the State Grid Corporation of China (SGCC) dataset data set.csv contains 1037 columns and 42,372 rows for electric consumption from January first 2014 to 30 October 2016. SGCC data first column is consumer ID that is alphanumeric. Then from column 2 to columns 1036 daily electricity consumption is given. Last column named flag is the labels in 0 and 1 values.
+
+- **Features**
+
+    - ***'MM/DD/YYYY':*** The electric consumption on a given day.
+    - ***CONS_NO:*** Consumer Number stands for a customer ID of string type.
+    - ***FLAG:*** 0 indicating no theft and 1 for theft.
 
 **Exploratory data analysis:** There are no null values in this data, and the length of the majority of posts lie under 500 characters, with very few exceeding 2000 characters. Mean character count is 680.136, min character count is 7, and max character count is 40106. This is illustrated below. 
 
