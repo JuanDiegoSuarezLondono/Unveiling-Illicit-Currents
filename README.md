@@ -28,6 +28,20 @@ Additionally, a detailed analysis was conducted on the consumption behavior of a
 
 These observations highlight distinctive consumption patterns between users with and without reported theft incidents, emphasizing the potential significance of electricity consumption behavior as an indicator of theft. Further investigation and feature engineering in this direction may enhance the model's discriminatory power.
 
+To better understand the model's behavior, the entire dataset was evaluated with the found model, and the following results were obtained:
+
+- Conclusion
+
+    - **Accuracy:** The model achieves an overall accuracy of 80%, indicating that 80% of the predictions are correct.
+    - **Precision:** For class 0 (non-theft), the precision is high (97%), suggesting that when the model predicts a non-theft instance, it is likely correct.
+    - **Recall (Sensitivity):** The recall for class 0 is 81%, meaning that the model correctly identifies 81% of non-theft instances. The recall for class 1 is 72%, suggesting that the model captures 72% of theft instances.
+    - **F1-Score:** The F1-score, which considers both precision and recall, is higher for class 0 (88%) compared to class 1 (38%).
+
+- Overall Interpretation:
+
+    - The model shows a good ability to predict non-theft instances (class 0) with high precision and recall.
+    - However, the performance is poorer for predicting theft instances (class 1), as indicated by the lower precision and F1-score.
+
 #### **Future Research and Development:**
 An intriguing observation reveals that addressing data imbalance with Undersampling instead of SMOTE (Synthetic Minority Over-sampling Technique) made a significant difference in the project's performance. Exploring alternative techniques to balance these imbalanced datasets would be worthwhile. Additionally, the dataset exhibits considerable variability in null values. Reducing the quantity of null data and imputing it with nearest neighbors significantly improved the model's performance. Considering alternative approaches, such as setting null values to zero, might also yield improved results.
 
