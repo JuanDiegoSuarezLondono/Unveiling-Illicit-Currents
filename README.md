@@ -16,8 +16,18 @@ The comprehensive performance summary of each model, including k-fold cross-vali
 [![Summary of results in a table](https://i.postimg.cc/wjX4Qcfk/Summary-of-results-in-a-table.png)](https://postimg.cc/gx0KYRPw)
 
 
-#### **Results and conclusion:**
-Our evaluation of the best model returned a list of words associated with their feature importance, or how helpful/unhelpful they were in the classification task. A global model analysis revealing the most effective (stemmed) words to detect [+ suicide] across the entire data shows the top five features to be ["suicid", "kill", "end", "pill", "life"] (results below). 
+### **Results and Conclusion:**
+
+Following data cleaning and preprocessing, two separate scatterplots were generated for instances with flag values of 0 and 1 over time. In the scatterplot for flag 0, data points predominantly stayed below the 700-unit threshold for electricity consumption, with most values falling below this limit. However, in the scatterplot for flag 1, a significant number of data points exceeded this threshold, saturating the plot from 0 to 3000 with electricity consumption values.
+
+[![Scatterplot Non-Theft](https://i.postimg.cc/Vv0jrCdh/Scatterplot-Non-Theft.png)](https://postimg.cc/y3BJ2Whh)
+[![Scatterplot Theft](https://i.postimg.cc/QVLcpd7d/Scatterplot-Theft.png)](https://postimg.cc/9wp42V16)
+
+Additionally, a detailed analysis was conducted on the consumption behavior of a sample of 5 users who had not reported theft (flag 0) and 5 users marked as having theft incidents (flag 1). Monthly consumption was calculated for each user over the entire dataset duration (from January 2014 to September 2016), creating a consumption behavior line for each user. The graphs revealed intriguing patterns: users with reported theft incidents exhibited consistently higher average consumption, often on the order of 200 units (considering that users without theft incidents had an average consumption of 10 or less). Some users with theft incidents displayed consumption patterns similar to those without theft, punctuated by periods of significant energy consumption spikes.
+
+[![Average Consumption Over Time](https://i.postimg.cc/k4pQgcX8/Average-Consumption-Over-Time.png)](https://postimg.cc/2bnbHnW8)
+
+These observations highlight distinctive consumption patterns between users with and without reported theft incidents, emphasizing the potential significance of electricity consumption behavior as an indicator of theft. Further investigation and feature engineering in this direction may enhance the model's discriminatory power.
 
 #### **Future Research and Development:**
 An intriguing observation reveals that addressing data imbalance with Undersampling instead of SMOTE (Synthetic Minority Over-sampling Technique) made a significant difference in the project's performance. Exploring alternative techniques to balance these imbalanced datasets would be worthwhile. Additionally, the dataset exhibits considerable variability in null values. Reducing the quantity of null data and imputing it with nearest neighbors significantly improved the model's performance. Considering alternative approaches, such as setting null values to zero, might also yield improved results.
